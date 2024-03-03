@@ -1,6 +1,12 @@
 # Golobal constant that sets Max Lines possible to 3
 MAX_LINES = 3
 
+# Global constant that sets Max bet possible to 100
+MAX_BET = 100
+
+#Global constant that sets Min bet possible to 1
+MIN_BET = 1
+
 # Function responsible for collecting user input that 
 # gets the deposit from the user
 def deposit():
@@ -62,11 +68,38 @@ def get_number_of_lines():
 
     return lines
 
-def 
+def get_bet():
+    while True:
+        
+        # Promits the user to enter the number of lines to bet one 1 - 3 
+        amount = input("What would you like to bet on each line? $")
+
+        # Makes sure amount entered is actually a number
+        if amount.isdigit():
+
+            # Coverts string entered into a int
+            amount = int(amount)
+
+            # Checks to see if amount is greater than MIN_BET and less than 
+            # MAX_BET
+            if MIN_BET <= amount <= MAX_BET:
+                break
+            else:
+
+                # Prints if amount is not between MIN_BET and MAX_BET
+                print(f"Amount must be between ${MIN_BET} - ${MAX_BET}. ")
+        else:
+
+            # Prints if user does not enter a number
+            print("PLease enter a number.")
+
+    return amount
+
 def main():
 # Calling deposit function
     balance = deposit()
     lines = get_number_of_lines()
+    bet = get_bet()
 
 main()
 
